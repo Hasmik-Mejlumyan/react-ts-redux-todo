@@ -5,8 +5,6 @@ import TodoListItem from "./TodoListItem";
 const TodoList = () => {
   const todos = useAppSelector(selectTodos);
 
-  console.log(todos, 'todos')
-
   return (
     <ul>
       {todos.map((todo) => (

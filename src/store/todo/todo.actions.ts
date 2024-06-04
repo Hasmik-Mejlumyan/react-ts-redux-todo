@@ -8,6 +8,7 @@ export const deleteTodo = createAction<number>(todoActionsTypes.DELETE_TODO)
 export const editTodo = createAction<number>(todoActionsTypes.EDIT_TODO)
 export const updateTodo = createAction<string>(todoActionsTypes.UPDATE_TODO)
 export const resetEntry = createAction(todoActionsTypes.RESET_ENTRY)
+export const changeCompletion = createAction<number>(todoActionsTypes.CHANGE_COMPLETION)
 
 // const addTodo = (todo: ITodo) => ({
 //   type: todoActionsTypes.ADD_TODO,

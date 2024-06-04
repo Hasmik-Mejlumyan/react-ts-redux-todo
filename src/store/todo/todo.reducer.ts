@@ -1,6 +1,6 @@
 import {createReducer} from "@reduxjs/toolkit";
 import {ITodoState} from "./types";
-import {addTodo, deleteTodo, editTodo, resetEntry, updateTodo} from "./todo.actions";
+import {addTodo, changeCompletion, deleteTodo, editTodo, resetEntry, updateTodo} from "./todo.actions";
 
 const initialState: ITodoState = {
   todos: [],
@@ -31,6 +31,9 @@ const todoReducer = createReducer(initialState, (builder) => {
     })
     .addCase(resetEntry, (state) => {
       state.entry = null
+    })
+    .addCase(changeCompletion, (state, action) => {
+      state.todos = state.todos.map(todo => todo.id === action.payload ? {...todo, isCompleted: !todo.isCompleted} : todo)
     })
     .addDefaultCase((state) => state)
 })

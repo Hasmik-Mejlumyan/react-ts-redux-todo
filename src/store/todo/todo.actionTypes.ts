@@ -4,6 +4,7 @@ const todoActionsTypes = {
   EDIT_TODO: 'todo/EDIT_TODO',
   UPDATE_TODO: 'todo/UPDATE_TODO',
   RESET_ENTRY: 'todo/RESET_ENTRY',
+  CHANGE_COMPLETION: 'todo/CHANGE_COMPLETION',
 }
 
 export default todoActionsTypes;

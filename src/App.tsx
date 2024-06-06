@@ -1,5 +1,5 @@
 import React from 'react';
-import {TodoForm, TodoList} from './components';
+import {TodoForm, TodoList, UserForm, UserList} from './components';
 
 function App() {
 
@@ -7,6 +7,11 @@ function App() {
     <div>
       <TodoForm />
       <TodoList />
+
+      <div>
+        <UserForm />
+        <UserList />
+      </div>
     </div>
   );
 }

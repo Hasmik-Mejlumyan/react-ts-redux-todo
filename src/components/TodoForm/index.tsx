@@ -9,8 +9,6 @@ const TodoForm = () => {
 
   const [value, setValue] = useState('');
 
-  console.log(entry, 'entry')
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   }

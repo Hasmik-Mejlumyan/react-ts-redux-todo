@@ -65,5 +65,20 @@ export const createPost = createAsyncThunk<IPost, IPostData>(postActionTypes.CRE
   }
 })
 
+export const deletePost = createAsyncThunk<number, number>(postActionTypes.DELETE_POST, async (id) => {
+  try {
+    const response = await postService.deletePost<{}>(id);
+
+    if (!response.data) {
+      throw new Error('Something went wrong');
+    }
+
+    return id;
+  } catch (error: any) {
+    console.log(error);
+    throw error.message;
+  }
+})
+
 
 export const resetEntry = createAction(postActionTypes.RESET_ENTRY)

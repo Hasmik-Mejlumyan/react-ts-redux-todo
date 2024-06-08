@@ -23,6 +23,10 @@ const postService = {
   createPost<T, D>(data: D) {
     return request<T, D>("POST", "posts", data);
   },
+
+  deletePost<T>(id: number) {
+    return request<T>("DELETE", `posts/${id}`);
+  }
 };
 
 export default postService;

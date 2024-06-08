@@ -7,7 +7,6 @@ import UserListItem from "./userListItem";
 const UserList = () => {
   const users = useAppSelector(selectUsers);
 
-  console.log(users, 'users')
   return (
     <ul>
       {users.map((user) => (

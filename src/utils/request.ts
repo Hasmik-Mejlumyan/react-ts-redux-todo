@@ -4,15 +4,15 @@ const axiosApi = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-axiosApi.interceptors.request.use((req) => {
-  const accessToken = localStorage.getItem('accessToken');
-
-  if (req && req.headers && accessToken) {
-    req.headers.Authorization = `Bearer ${accessToken}`;
-  }
-
-  return req;
-});
+// axiosApi.interceptors.request.use((req) => {
+//   const accessToken = localStorage.getItem('accessToken');
+//
+//   if (req && req.headers && accessToken) {
+//     req.headers.Authorization = `Bearer ${accessToken}`;
+//   }
+//
+//   return req;
+// });
 
 const request = <T = any, D = any, R = AxiosResponse<T>>(method: Method, url: string, data?: D, params?: any): Promise<R> => {
   return axiosApi.request<T, R, D>({

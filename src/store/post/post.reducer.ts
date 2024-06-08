@@ -1,6 +1,6 @@
 import {createReducer} from "@reduxjs/toolkit";
 import {IPostState} from "./types";
-import {getPost, getPosts} from "./post.actions";
+import {createPost, getPost, getPosts} from "./post.actions";
 
 const initialState: IPostState = {
   posts: [],
@@ -39,6 +39,21 @@ const postReducer = createReducer(initialState, (builder) => {
       state.error = null;
     })
     .addCase(getPost.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message || 'Something went wrong';
+    })
+
+    // createPost
+    .addCase(createPost.fulfilled, (state, action) => {
+      state.posts.unshift(action.payload);
+      state.isLoading = false;
+      state.error = null;
+    })
+    .addCase(createPost.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(createPost.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message || 'Something went wrong';
     })

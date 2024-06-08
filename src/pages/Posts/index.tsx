@@ -2,6 +2,7 @@ import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../store";
 import {getPosts, selectPosts, selectIsLoading} from "../../store/post";
 import PostItem from "../../components/PostItem";
+import PostForm from "../../components/PostForm";
 
 
 const Posts = () => {
@@ -20,12 +21,16 @@ const Posts = () => {
   }
 
   return (
-    <ul>
-      {posts.map(post => (
-        <PostItem key={post.id} post={post} />
-      ))}
-    </ul>
+    <div>
+      <PostForm />
+      <ul>
+        {posts.map(post => (
+          <PostItem key={post.id} post={post}/>
+        ))}
+      </ul>
+    </div>
+
   )
 };
 
-export default  Posts;
+export default Posts;

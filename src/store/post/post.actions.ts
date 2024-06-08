@@ -1,6 +1,6 @@
 import {createAsyncThunk, createAction} from "@reduxjs/toolkit";
 import postActionTypes from "./post.actionTypes";
-import {IPost} from "../../types";
+import {IPost, IPostData} from "../../types";
 import postService  from "../../services/post";
 import {IGetPostPayloadData} from "./types";
 
@@ -49,6 +49,21 @@ export const getPost = createAsyncThunk<IPost, IGetPostPayloadData>(postActionTy
     throw error.message;
   }
 });
+
+export const createPost = createAsyncThunk<IPost, IPostData>(postActionTypes.CREATE_POST, async (data) => {
+  try {
+    const response = await postService.createPost<IPost, IPostData>(data);
+
+    if (!response.data?.id) {
+      throw new Error('Something went wrong');
+    }
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.message;
+  }
+})
 
 
 export const resetEntry = createAction(postActionTypes.RESET_ENTRY)

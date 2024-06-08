@@ -2,6 +2,8 @@ import React from 'react';
 import {TodoForm, TodoList, UserForm, UserList} from './components';
 import {Routes, Route, Link} from 'react-router-dom';
 import Posts from "./pages/Posts";
+import Post from "./pages/Post";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
         }/>
 
         <Route path="/posts" element={<Posts />} />
+        <Route path="/posts/:id" element={<Post />} />
+        <Route path="/not-found" element={<NotFound />} />
       </Routes>
     </div>
   );

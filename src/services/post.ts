@@ -15,6 +15,10 @@ const postService = {
   getPosts<T>() {
     return request<T>("GET", "posts");
   },
+
+  getPost<T>(id: string) {
+    return request<T>("GET", `posts/${id}`);
+  }
 };
 
 export default postService;

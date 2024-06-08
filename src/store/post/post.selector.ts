@@ -12,3 +12,8 @@ export const selectIsLoading = createSelector(
   postState,
   (state) => state.isLoading
 )
+
+export const selectPostEntry = createSelector(
+  postState,
+  (state) => state.entry
+)

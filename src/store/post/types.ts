@@ -1,3 +1,4 @@
+import {NavigateFunction} from "react-router-dom";
 import {IPost} from "../../types";
 
 export interface IPostState {
@@ -11,4 +12,10 @@ export interface IPostState {
 export interface IGetPostsReturnData {
   whom: string;
   data: IPost[];
+}
+
+// getPost action
+export interface IGetPostPayloadData {
+  id: string;
+  navigate: NavigateFunction;
 }

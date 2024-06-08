@@ -1,7 +1,8 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
+import {createAsyncThunk, createAction} from "@reduxjs/toolkit";
 import postActionTypes from "./post.actionTypes";
 import {IPost} from "../../types";
 import postService  from "../../services/post";
+import {IGetPostPayloadData} from "./types";
 
 
 // const aaa = (data, index, navigate) => async (dispatch, getState) => {
@@ -28,4 +29,26 @@ export const getPosts = createAsyncThunk<IPost[]>(postActionTypes.GET_POSTS, asy
     console.log(error);
     throw error.message;
   }
-})
+});
+
+export const getPost = createAsyncThunk<IPost, IGetPostPayloadData>(postActionTypes.GET_POST, async ({id, navigate}) => {
+  try {
+    // @ts-ignore
+    const response = await postService.getPost<IPost>(id);
+
+    if (!response.data?.id) {
+      throw new Error('Something went wrong');
+    }
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+
+    // Call some toast function
+    navigate('/not-found');
+    throw error.message;
+  }
+});
+
+
+export const resetEntry = createAction(postActionTypes.RESET_ENTRY)
